@@ -10,7 +10,7 @@ import requests
 
 load_dotenv() #> loads contents of the .env file into the script's environment
 
-API_KEY = os.environ.get("ALPHAVANTAGE_API_KEY")
+API_KEY = os.environ.get("ALPHAVANTAGE_API_KEY", "abc123") # default to using this example API Key, which is surprisingly valid :-D
 
 def get_response(symbol):
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={API_KEY}"
