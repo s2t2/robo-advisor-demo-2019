@@ -94,3 +94,12 @@ def test_to_usd():
 def test_float_conversion():
     assert float("102.6500") == 102.65
     assert float("101.0924") == 101.0924 # interesting but helpful that the full value is retained
+
+def test_path_splitting():
+    # the splitting should work with windows-style filepaths:
+    my_windows_filepath = 'app\\..\\data\\prices.csv'
+    assert my_windows_filepath.split("..")[1] == "\data\prices.csv"
+
+    # the splitting should work with mac-style filepaths:
+    my_mac_filepath = 'app/../data/prices.csv'
+    assert my_mac_filepath.split("..")[1] == "/data/prices.csv"
